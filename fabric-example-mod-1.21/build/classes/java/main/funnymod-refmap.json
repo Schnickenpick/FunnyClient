@@ -1,0 +1,98 @@
+{
+  "mappings": {
+    "com/example/mixin/AutoTotemMixin": {
+      "tick": "Lnet/minecraft/class_746;method_5773()V"
+    },
+    "com/example/mixin/CrystalAuraMixin": {
+      "tick": "Lnet/minecraft/class_746;method_5773()V"
+    },
+    "com/example/mixin/FlightMixin": {
+      "tick": "Lnet/minecraft/class_746;method_5773()V"
+    },
+    "com/example/mixin/FullBrightMixin": {
+      "getBrightness": "Lnet/minecraft/class_765;method_23284(Lnet/minecraft/class_2874;I)F"
+    },
+    "com/example/mixin/IMinecraftClient": {
+      "itemUseCooldown": "field_1752:I"
+    },
+    "com/example/mixin/JesusMixin": {
+      "getCollisionShape": "Lnet/minecraft/class_2404;method_9549(Lnet/minecraft/class_2680;Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;Lnet/minecraft/class_3726;)Lnet/minecraft/class_265;"
+    },
+    "com/example/mixin/KillAuraMixin": {
+      "tick": "Lnet/minecraft/class_746;method_5773()V"
+    },
+    "com/example/mixin/MovementMixin": {
+      "tick": "Lnet/minecraft/class_746;method_5773()V"
+    },
+    "com/example/mixin/NoFallMixin": {
+      "sendMovementPackets": "Lnet/minecraft/class_746;method_3136()V"
+    },
+    "com/example/mixin/PlayerMoveMixin": {
+      "getMovementSpeed": "Lnet/minecraft/class_1657;method_6029()F"
+    },
+    "com/example/mixin/ReachMixin": {
+      "getEntityInteractionRange": "Lnet/minecraft/class_1657;method_55755()D"
+    },
+    "com/example/mixin/RenderMixin": {
+      "render": "Lnet/minecraft/class_761;method_22710(Lnet/minecraft/class_9922;Lnet/minecraft/class_9779;ZLnet/minecraft/class_4184;Lnet/minecraft/class_757;Lorg/joml/Matrix4f;Lorg/joml/Matrix4f;)V"
+    },
+    "com/example/mixin/SpiderMixin": {
+      "tick": "Lnet/minecraft/class_1657;method_5773()V"
+    },
+    "com/example/mixin/StepMixin": {
+      "tick": "Lnet/minecraft/class_1657;method_5773()V"
+    },
+    "com/example/mixin/VelocityMixin": {
+      "onEntityVelocityUpdate": "Lnet/minecraft/class_634;method_11132(Lnet/minecraft/class_2743;)V"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "com/example/mixin/AutoTotemMixin": {
+        "tick": "Lnet/minecraft/class_746;method_5773()V"
+      },
+      "com/example/mixin/CrystalAuraMixin": {
+        "tick": "Lnet/minecraft/class_746;method_5773()V"
+      },
+      "com/example/mixin/FlightMixin": {
+        "tick": "Lnet/minecraft/class_746;method_5773()V"
+      },
+      "com/example/mixin/FullBrightMixin": {
+        "getBrightness": "Lnet/minecraft/class_765;method_23284(Lnet/minecraft/class_2874;I)F"
+      },
+      "com/example/mixin/IMinecraftClient": {
+        "itemUseCooldown": "field_1752:I"
+      },
+      "com/example/mixin/JesusMixin": {
+        "getCollisionShape": "Lnet/minecraft/class_2404;method_9549(Lnet/minecraft/class_2680;Lnet/minecraft/class_1922;Lnet/minecraft/class_2338;Lnet/minecraft/class_3726;)Lnet/minecraft/class_265;"
+      },
+      "com/example/mixin/KillAuraMixin": {
+        "tick": "Lnet/minecraft/class_746;method_5773()V"
+      },
+      "com/example/mixin/MovementMixin": {
+        "tick": "Lnet/minecraft/class_746;method_5773()V"
+      },
+      "com/example/mixin/NoFallMixin": {
+        "sendMovementPackets": "Lnet/minecraft/class_746;method_3136()V"
+      },
+      "com/example/mixin/PlayerMoveMixin": {
+        "getMovementSpeed": "Lnet/minecraft/class_1657;method_6029()F"
+      },
+      "com/example/mixin/ReachMixin": {
+        "getEntityInteractionRange": "Lnet/minecraft/class_1657;method_55755()D"
+      },
+      "com/example/mixin/RenderMixin": {
+        "render": "Lnet/minecraft/class_761;method_22710(Lnet/minecraft/class_9922;Lnet/minecraft/class_9779;ZLnet/minecraft/class_4184;Lnet/minecraft/class_757;Lorg/joml/Matrix4f;Lorg/joml/Matrix4f;)V"
+      },
+      "com/example/mixin/SpiderMixin": {
+        "tick": "Lnet/minecraft/class_1657;method_5773()V"
+      },
+      "com/example/mixin/StepMixin": {
+        "tick": "Lnet/minecraft/class_1657;method_5773()V"
+      },
+      "com/example/mixin/VelocityMixin": {
+        "onEntityVelocityUpdate": "Lnet/minecraft/class_634;method_11132(Lnet/minecraft/class_2743;)V"
+      }
+    }
+  }
+}
