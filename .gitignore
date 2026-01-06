@@ -1,0 +1,32 @@
+# Gradle
+.gradle/
+build/
+out/
+classes/
+
+# IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# VSCode
+.vscode/
+
+# Fabric
+run/
+
+# macOS
+.DS_Store
+
+# Log files
+*.log
+
+# Old files
+fabric-example-mod-1.21/
+funnymod-1.0.0.jar
