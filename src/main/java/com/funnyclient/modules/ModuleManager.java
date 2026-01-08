@@ -2,6 +2,12 @@ package com.funnyclient.modules;
 
 import com.funnyclient.modules.combat.CrystalAura;
 import com.funnyclient.modules.movement.Flight;
+import com.funnyclient.modules.player.Nuker;
+import com.funnyclient.modules.player.Reach;
+import com.funnyclient.modules.player.Scaffold;
+import com.funnyclient.modules.render.ESP;
+import com.funnyclient.modules.render.Fullbright;
+import com.funnyclient.modules.render.Tracers;
 import com.funnyclient.FunnyClient;
 
 import java.util.ArrayList;
@@ -12,9 +18,21 @@ public class ModuleManager {
     private final List<Module> modules = new ArrayList<>();
     
     public ModuleManager() {
-        // Register modules
-        register(new Flight());
+        // Combat modules
         register(new CrystalAura());
+        
+        // Movement modules
+        register(new Flight());
+        
+        // Player modules
+        register(new Nuker());
+        register(new Reach());
+        register(new Scaffold());
+        
+        // Render modules
+        register(new ESP());
+        register(new Fullbright());
+        register(new Tracers());
         
         FunnyClient.LOGGER.info("Registered {} modules", modules.size());
     }
@@ -44,5 +62,13 @@ public class ModuleManager {
         return modules.stream()
             .filter(m -> m.getCategory() == category)
             .collect(Collectors.toList());
+    }
+    
+    public <T extends Module> T getModule(Class<T> moduleClass) {
+        return modules.stream()
+            .filter(m -> m.getClass() == moduleClass)
+            .map(moduleClass::cast)
+            .findFirst()
+            .orElse(null);
     }
 }
