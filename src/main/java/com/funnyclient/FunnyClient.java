@@ -2,12 +2,12 @@ package com.funnyclient;
 
 import com.funnyclient.modules.ModuleManager;
 import com.funnyclient.events.EventManager;
-import net.fabricmc.api.ModInitializer;
+import net.fabricmc.api.ClientModInitializer; // Requirement for "client" entrypoint
 import net.minecraft.client.MinecraftClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class FunnyClient implements ModInitializer {
+public class FunnyClient implements ClientModInitializer {
     public static final String MOD_ID = "funnyclient";
     public static final String NAME = "FunnyClient";
     public static final String VERSION = "1.0.0";
@@ -20,16 +20,18 @@ public class FunnyClient implements ModInitializer {
     private EventManager eventManager;
     
     @Override
-    public void onInitialize() {
+    public void onInitializeClient() {
         INSTANCE = this;
+        // Correct way to initialize MC instance during client startup
         mc = MinecraftClient.getInstance();
         
-        LOGGER.info("Initializing {} v{}", NAME, VERSION);
+        LOGGER.info("Initializing {} v{} for Minecraft 1.21.4", NAME, VERSION);
         
+        // Initialize managers
         eventManager = new EventManager();
         moduleManager = new ModuleManager();
         
-        LOGGER.info("{} initialized successfully!", NAME);
+        LOGGER.info("{} initialization complete!", NAME);
     }
     
     public ModuleManager getModuleManager() {
