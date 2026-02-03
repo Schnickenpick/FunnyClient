@@ -1,9 +1,0 @@
-package com.example.mixin;
-
-import net.minecraft.entity.LivingEntity;
-import org.spongepowered.asm.mixin.Mixin;
-
-@Mixin(LivingEntity.class)
-public abstract class LivingEntityMixin {
-    // Left empty to prevent 1.21.4 compatibility crashes
-}

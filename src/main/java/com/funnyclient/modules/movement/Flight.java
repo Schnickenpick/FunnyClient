@@ -101,7 +101,11 @@ public class Flight extends Module {
         }
     }
     
+<<<<<<< HEAD
     /* 
+=======
+    /* TODO: Fix
+>>>>>>> f4e41528975fe995e7c27903401680c4b4a7920b
     private void packetFly() {
         mc.player.setVelocity(0, 0, 0);
         
