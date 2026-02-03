@@ -28,8 +28,6 @@ public class ClickGuiScreen extends Screen {
     
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        // Semi-transparent background
-        context.fillGradient(0, 0, this.width, this.height, 0x50000000, 0x50000000);
         
         for (CategoryPanel panel : panels) {
             panel.render(context, mouseX, mouseY);
