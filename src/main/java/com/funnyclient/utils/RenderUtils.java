@@ -2,6 +2,7 @@ package com.funnyclient.utils;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gl.ShaderProgramKeys;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
@@ -22,7 +23,6 @@ public class RenderUtils {
         Matrix4f matrix = matrices.peek().getPositionMatrix();
         BufferBuilder buffer = Tessellator.getInstance().begin(VertexFormat.DrawMode.DEBUG_LINES, VertexFormats.POSITION_COLOR);
         
-        // Draw the box edges
         float x1 = (float) box.minX;
         float y1 = (float) box.minY;
         float z1 = (float) box.minZ;
@@ -30,7 +30,7 @@ public class RenderUtils {
         float y2 = (float) box.maxY;
         float z2 = (float) box.maxZ;
         
-        // Bottom face
+        // Bottom
         buffer.vertex(matrix, x1, y1, z1).color(r, g, b, a);
         buffer.vertex(matrix, x2, y1, z1).color(r, g, b, a);
         buffer.vertex(matrix, x2, y1, z1).color(r, g, b, a);
@@ -40,7 +40,7 @@ public class RenderUtils {
         buffer.vertex(matrix, x1, y1, z2).color(r, g, b, a);
         buffer.vertex(matrix, x1, y1, z1).color(r, g, b, a);
         
-        // Top face
+        // Top
         buffer.vertex(matrix, x1, y2, z1).color(r, g, b, a);
         buffer.vertex(matrix, x2, y2, z1).color(r, g, b, a);
         buffer.vertex(matrix, x2, y2, z1).color(r, g, b, a);
@@ -50,7 +50,7 @@ public class RenderUtils {
         buffer.vertex(matrix, x1, y2, z2).color(r, g, b, a);
         buffer.vertex(matrix, x1, y2, z1).color(r, g, b, a);
         
-        // Vertical edges
+        // Verticals
         buffer.vertex(matrix, x1, y1, z1).color(r, g, b, a);
         buffer.vertex(matrix, x1, y2, z1).color(r, g, b, a);
         buffer.vertex(matrix, x2, y1, z1).color(r, g, b, a);
@@ -60,7 +60,7 @@ public class RenderUtils {
         buffer.vertex(matrix, x1, y1, z2).color(r, g, b, a);
         buffer.vertex(matrix, x1, y2, z2).color(r, g, b, a);
         
-        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
+        RenderSystem.setShader(ShaderProgramKeys.RENDERTYPE_LINES);
         RenderSystem.lineWidth(2.0f);
         RenderSystem.disableDepthTest();
         RenderSystem.enableBlend();
@@ -70,13 +70,11 @@ public class RenderUtils {
         
         RenderSystem.enableDepthTest();
         RenderSystem.disableBlend();
-        
         matrices.pop();
     }
     
     public static void drawLine(MatrixStack matrices, Vec3d start, Vec3d end, float r, float g, float b, float a) {
         matrices.push();
-        
         Vec3d camPos = mc.gameRenderer.getCamera().getPos();
         matrices.translate(-camPos.x, -camPos.y, -camPos.z);
         
@@ -86,7 +84,7 @@ public class RenderUtils {
         buffer.vertex(matrix, (float) start.x, (float) start.y, (float) start.z).color(r, g, b, a);
         buffer.vertex(matrix, (float) end.x, (float) end.y, (float) end.z).color(r, g, b, a);
         
-        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
+        RenderSystem.setShader(ShaderProgramKeys.RENDERTYPE_LINES);
         RenderSystem.lineWidth(2.0f);
         RenderSystem.disableDepthTest();
         RenderSystem.enableBlend();
@@ -96,7 +94,6 @@ public class RenderUtils {
         
         RenderSystem.enableDepthTest();
         RenderSystem.disableBlend();
-        
         matrices.pop();
     }
     

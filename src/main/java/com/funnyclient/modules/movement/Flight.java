@@ -3,7 +3,7 @@ package com.funnyclient.modules.movement;
 import com.funnyclient.modules.Module;
 import com.funnyclient.settings.DoubleSetting;
 import com.funnyclient.settings.ModeSetting;
-import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
+//import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 
 public class Flight extends Module {
     private final ModeSetting mode = new ModeSetting("Mode", "Vanilla", "Vanilla", "Packet", "Creative");
@@ -45,9 +45,9 @@ public class Flight extends Module {
             case "Vanilla":
                 vanillaFly();
                 break;
-            case "Packet":
-                packetFly();
-                break;
+            //case "Packet":
+            //    packetFly();
+            //    break;
             case "Creative":
                 // Creative mode handles itself
                 break;
@@ -101,6 +101,7 @@ public class Flight extends Module {
         }
     }
     
+    /* TODO: Fix
     private void packetFly() {
         mc.player.setVelocity(0, 0, 0);
         
@@ -132,11 +133,11 @@ public class Flight extends Module {
             y -= verticalSpeed.getValue();
         }
         
-        // Send position packet
+        // Send position packet - FIXED for 1.21.4
         mc.player.networkHandler.sendPacket(
-            new PlayerMoveC2SPacket.PositionAndOnGround(x, y, z, false)
+            PlayerMoveC2SPacket.Full(x, y, z, mc.player.getYaw(), mc.player.getPitch(), false)
         );
         
         mc.player.setPosition(x, y, z);
-    }
+    } */
 }

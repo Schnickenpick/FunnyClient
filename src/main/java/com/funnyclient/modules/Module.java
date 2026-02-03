@@ -14,7 +14,7 @@ public abstract class Module {
     private final String name;
     private final String description;
     private final Category category;
-    private final List<Setting> settings = new ArrayList<>();
+    private final List<Setting<?>> settings = new ArrayList<>(); // Fixed generic
     
     private boolean enabled = false;
     private boolean expanded = false;
@@ -32,47 +32,29 @@ public abstract class Module {
     
     public void setEnabled(boolean enabled) {
         if (this.enabled == enabled) return;
-        
         this.enabled = enabled;
-        
-        if (enabled) {
-            onEnable();
-        } else {
-            onDisable();
-        }
+        if (enabled) onEnable(); else onDisable();
     }
     
     public void onEnable() {}
     public void onDisable() {}
     public void onTick() {}
     
-    // Getters
     public String getName() { return name; }
     public String getDescription() { return description; }
     public Category getCategory() { return category; }
     public boolean isEnabled() { return enabled; }
     public boolean isExpanded() { return expanded; }
     public int getKey() { return key; }
-    public List<Setting> getSettings() { return settings; }
+    public List<Setting<?>> getSettings() { return settings; } // Fixed generic
     
     public void setKey(int key) { this.key = key; }
     public void setExpanded(boolean expanded) { this.expanded = expanded; }
     
     public enum Category {
-        COMBAT("Combat"),
-        MOVEMENT("Movement"),
-        RENDER("Render"),
-        PLAYER("Player"),
-        MISC("Misc");
-        
+        COMBAT("Combat"), MOVEMENT("Movement"), RENDER("Render"), PLAYER("Player"), MISC("Misc");
         private final String name;
-        
-        Category(String name) {
-            this.name = name;
-        }
-        
-        public String getName() {
-            return name;
-        }
+        Category(String name) { this.name = name; }
+        public String getName() { return name; }
     }
 }
