@@ -75,20 +75,23 @@ public class RenderUtils {
     
     public static void drawLine(MatrixStack matrices, Vec3d start, Vec3d end, float r, float g, float b, float a) {
         matrices.push();
+        
+        // Use the camera's interpolated position to prevent "lagging" lines
         Vec3d camPos = mc.gameRenderer.getCamera().getPos();
         matrices.translate(-camPos.x, -camPos.y, -camPos.z);
         
         Matrix4f matrix = matrices.peek().getPositionMatrix();
-        BufferBuilder buffer = Tessellator.getInstance().begin(VertexFormat.DrawMode.DEBUG_LINES, VertexFormats.POSITION_COLOR);
-        
-        buffer.vertex(matrix, (float) start.x, (float) start.y, (float) start.z).color(r, g, b, a);
-        buffer.vertex(matrix, (float) end.x, (float) end.y, (float) end.z).color(r, g, b, a);
         
         RenderSystem.setShader(ShaderProgramKeys.RENDERTYPE_LINES);
         RenderSystem.lineWidth(2.0f);
         RenderSystem.disableDepthTest();
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
+
+        BufferBuilder buffer = Tessellator.getInstance().begin(VertexFormat.DrawMode.DEBUG_LINES, VertexFormats.POSITION_COLOR);
+        
+        buffer.vertex(matrix, (float) start.x, (float) start.y, (float) start.z).color(r, g, b, a);
+        buffer.vertex(matrix, (float) end.x, (float) end.y, (float) end.z).color(r, g, b, a);
         
         BufferRenderer.drawWithGlobalProgram(buffer.end());
         
@@ -96,6 +99,7 @@ public class RenderUtils {
         RenderSystem.disableBlend();
         matrices.pop();
     }
+    
     
     public static void drawEntityBox(MatrixStack matrices, Entity entity, float r, float g, float b, float a) {
         drawBox(matrices, entity.getBoundingBox(), r, g, b, a);

@@ -31,15 +31,18 @@ public class Tracers extends Module {
     private void onRender(RenderEvent event) {
         if (!isEnabled() || mc.player == null || mc.world == null) return;
         
-        Vec3d playerPos = mc.player.getEyePos();
+        Vec3d playerPos = mc.gameRenderer.getCamera().getPos();
+        Vec3d playerPosOffset = playerPos.add(0, -0.1, 0);
         
+
+
         if (players.getValue()) {
             for (PlayerEntity player : WorldUtils.getPlayers()) {
                 double distance = mc.player.distanceTo(player);
                 if (distance > range.getValue()) continue;
                 
                 Vec3d targetPos = player.getPos().add(0, player.getEyeHeight(player.getPose()) / 2, 0);
-                RenderUtils.drawLine(event.getMatrices(), playerPos, targetPos, 1.0f, 0.0f, 0.0f, 1.0f);
+                RenderUtils.drawLine(event.getMatrices(), playerPosOffset, targetPos, 1.0f, 0.0f, 0.0f, 1.0f);
             }
         }
         
@@ -47,7 +50,7 @@ public class Tracers extends Module {
             for (LivingEntity mob : WorldUtils.getMobs(range.getValue())) {
                 if (mob instanceof Monster) {
                     Vec3d targetPos = mob.getPos().add(0, mob.getEyeHeight(mob.getPose()) / 2, 0);
-                    RenderUtils.drawLine(event.getMatrices(), playerPos, targetPos, 1.0f, 0.5f, 0.0f, 1.0f);
+                    RenderUtils.drawLine(event.getMatrices(), playerPosOffset, targetPos, 1.0f, 0.5f, 0.0f, 1.0f);
                 }
             }
         }

@@ -25,7 +25,14 @@ public class ClickGuiScreen extends Screen {
             x += PANEL_WIDTH + PANEL_SPACING;
         }
     }
-    
+
+    @Override
+    public void renderBackground(DrawContext context, int mouseX, int mouseY, float delta) {
+        // By leaving this empty, we remove both the background tint and the blur shader
+        // If you want a slight dark tint WITHOUT blur, uncomment the line below:
+        // context.fill(0, 0, this.width, this.height, 0x44000000);
+    }
+
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         
